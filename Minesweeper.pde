@@ -53,11 +53,19 @@ public boolean isWon()
 }
 public void displayLosingMessage()
 {
-  text("You lost!", 200, 200);
+  for(int r = 0; r < buttons.length; r++){
+    for(int c = 0; c < buttons[r].length; c++){
+      buttons[r][c].setLabel("You lost!");
+    }
+  }
 }
 public void displayWinningMessage()
 {
-  text("You won!", 200, 200);
+  for(int r = 0; r < buttons.length; r++){
+    for(int c = 0; c < buttons[r].length; c++){
+      buttons[r][c].setLabel("You won!");
+    }
+  }
 }
 public boolean isValid(int r, int c)
 {
