@@ -1,8 +1,8 @@
 import de.bezier.guido.*;
 //Declare and initialize constants NUM_ROWS and NUM_COLS = 20
 //static = can refer to a function using constructor
-public final static int NUM_ROWS = 5;
-public final static int NUM_COLS = 5;
+public final static int NUM_ROWS = 10;
+public final static int NUM_COLS = 10;
 private MSButton[][] buttons; //2d array of minesweeper buttons
 private ArrayList <MSButton> mines = new ArrayList <MSButton>(); //ArrayList of just the minesweeper buttons that are mined
 
@@ -27,12 +27,21 @@ void setup ()
 }
 public void setMines()
 {
-    int r = (int)(Math.random()*NUM_ROWS);
-    int c = (int)(Math.random()*NUM_COLS);
-    //generate a random position
-    //if it doesnt have a mine there, place one
-    if(!mines.contains(buttons[r][c])){
-      mines.add(buttons[r][c]);
+    //int r = (int)(Math.random()*NUM_ROWS);
+    //int c = (int)(Math.random()*NUM_COLS);
+    ////generate a random position
+    ////if it doesnt have a mine there, place one
+    //if(!mines.contains(buttons[r][c])){
+    //  mines.add(buttons[r][c]);
+    //}
+    int r;
+    int c;
+    for(int i = 0; i < 5; i++){
+      r = (int)(Math.random()*NUM_ROWS);
+      c = (int)(Math.random()*NUM_COLS);
+      if(!mines.contains(buttons[r][c])){
+        mines.add(buttons[r][c]);
+      }
     }
 }
 
@@ -45,11 +54,11 @@ public void draw ()
 public boolean isWon()
 {
   for(int i = 0; i < mines.size(); i++){
-    if(mines.get(i).flagged == true){
-       return true;
+    if(mines.get(i).flagged == false){
+       return false;
     }
   }
-  return false;
+  return true;
 }
 public void displayLosingMessage()
 {
@@ -191,9 +200,9 @@ public class MSButton
         else if(clicked && mines.contains(this)) 
             fill(255,0,0);
         else if(clicked)
-            fill( 200 );
+            fill(214, 177, 165);
         else 
-            fill( 100 );
+            fill(138, 224, 81);
 
         rect(x, y, width, height);
         fill(0);
