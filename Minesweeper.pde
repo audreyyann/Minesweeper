@@ -67,6 +67,13 @@ public void displayLosingMessage()
       buttons[r][c].setLabel("You lost!");
     }
   }
+  for(int r = 0; r < NUM_ROWS; r++){
+    for(int c = 0; c < NUM_COLS; c++){
+      if(mines.contains(buttons[r][c])){
+        buttons[r][c].clicked = true;
+      }
+    }
+  }
 }
 public void displayWinningMessage()
 {
@@ -197,8 +204,9 @@ public class MSButton
     {    
         if (flagged)
             fill(0);
-        else if(clicked && mines.contains(this)) 
-            fill(255,0,0);
+        else if(clicked && mines.contains(this)){
+            fill(255, 0, 0);
+        }
         else if(clicked)
             fill(214, 177, 165);
         else 
